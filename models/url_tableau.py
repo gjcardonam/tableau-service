@@ -22,7 +22,7 @@ class Url_Tableau():
         return response
 
     # POST
-    async def POST(self, request: Request):
+    def POST(self, request: Request):
 
         # Initialize variables
         url = request.url
@@ -38,7 +38,7 @@ class Url_Tableau():
 
     # ----------------------    URL    ----------------------
     # Login
-    async def login(self, site: Site):
+    def login(self, site: Site):
         # Open settings
         with open('settings/api_version_tableau.yaml') as settings:
             server_settings = yaml.load(settings, Loader=yaml.FullLoader)
@@ -71,7 +71,7 @@ class Url_Tableau():
         request.body = body
 
         # Request
-        response = await self.POST(request)
+        response = self.POST(request)
 
         return response
     # ----------------------    URL    ----------------------

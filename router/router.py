@@ -3,7 +3,7 @@ import json
 from modules.CSV_to_JSON import CSV_to_JSON
 
 
-async def router(route, content):
+def router(route, content):
 
     # Reading and transforming content into users dictionary
     if content["json"]:
@@ -26,6 +26,6 @@ async def router(route, content):
         f'micro_service.{microservice}', fromlist=[microservice])
 
     # Calling the microservice
-    call = await getattr(microservice_module, microservice)(users)
+    call = getattr(microservice_module, microservice)(users)
 
     return call
