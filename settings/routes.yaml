@@ -1,0 +1,6 @@
+# Add the route followed by the microservice as Route: Microservice
+
+route_microservice:
+    add_users: add_or_update_users
+    update_users: add_or_update_users
+    hola: mundo
