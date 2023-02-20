@@ -1,9 +1,11 @@
 add_or_update_users:
-  servers:
-    - tableau2
+  sites:
+    - people_analytics
     - no working
   modules:
     - users_backups
+  login:
+    - Rafa
 
 hola_mundo:
   servers:
@@ -11,3 +13,6 @@ hola_mundo:
     - tableau3
   modules:
     - users_backups
+    - CSV_to_JSON
+  login:
+    - Default

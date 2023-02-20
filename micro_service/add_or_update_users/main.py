@@ -5,30 +5,41 @@ import yaml
 import os
 
 
-def add_or_update_users(users: list[User]):
+def main(users: list[User]):
 
+    # ---------------------------- Initialization ----------------------------
     # Microservice settings
+    microservice_name = os.path.basename(os.path.dirname(__file__))
     with open('settings/microservices.yaml') as settings:
-        microservices = yaml.load(settings, Loader=yaml.FullLoader)
+        microservice = yaml.load(settings, Loader=yaml.FullLoader)[
+            microservice_name]
 
     # Dynamic import of modules
     modules_lib = dict()
-    microservice = os.path.basename(os.path.dirname(__file__))
-    for module in microservices[microservice]['modules']:
+    for module in microservice['modules']:
         modules_lib[module] = __import__(
             f'modules.{module}', fromlist=[module])
 
+    # ---------------------------- Initialization ----------------------------
+
+    # ----------------------------    Algorithm   ----------------------------
     # Users backups
-    servers = microservices[microservice]['servers']
+    sites = microservice['sites']
     users = getattr(modules_lib['users_backups'],
-                    'users_backups')(users, servers)
+                    'users_backups')(users, sites)
 
     # Order users
     users.sort(key=lambda user: (user.server is None, user.server))
+    users.sort(key=lambda user: (user.site is None, user.site))
 
-    site = Site()
-    site.server = 'tableau.falabella.com'
-    site.site_name = 'No working'
+    for user in users:
 
-    url_tableau.login(site)
+        # Login tableau
+        site = Site()
+        site.server = user.server
+        site.site_name = user.site
+
+        url_tableau.login(site)
+
     return 'hola mundo'
+    # ----------------------------    Algorithm   ----------------------------
