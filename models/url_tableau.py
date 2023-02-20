@@ -40,7 +40,7 @@ class Url_Tableau():
     # Login
     def login(self, site: Site):
         # Open settings
-        with open('settings/api_version_tableau.yaml') as settings:
+        with open('settings/servers_tableau.yaml') as settings:
             server_settings = yaml.load(settings, Loader=yaml.FullLoader)
 
         # Initialize variables

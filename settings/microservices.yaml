@@ -1,0 +1,13 @@
+add_or_update_users:
+  servers:
+    - tableau2
+    - no working
+  modules:
+    - users_backups
+
+hola_mundo:
+  servers:
+    - tableau2
+    - tableau3
+  modules:
+    - users_backups
