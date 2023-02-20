@@ -1,18 +1,18 @@
 from flask import Flask, request
-from router.router import router
+from controllers.controllers import controllers
 
 app = Flask(__name__)
 
 
 @app.route('/tableau/<route>', methods=['POST'])
-def controller(route):
+def router(route):
     # Content management
     content = {
         "json": request.get_json(silent=True),
         "file": request.files
     }
 
-    return router(route, content)
+    return controllers(route, content)
 
 
 if __name__ == '__main__':
