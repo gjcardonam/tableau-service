@@ -10,14 +10,13 @@ class Url_Tableau():
 
     # ----------------------  Methods  ----------------------
     # GET
-    async def GET(self, request: Request):
+    def GET(self, request: Request):
         # Initialize variables
         url = request.url
-        body = request.body
         headers = request.headers
 
         # Request to site
-        response = requests.get(url, body, headers)
+        response = requests.get(url, headers)
 
         return response
 

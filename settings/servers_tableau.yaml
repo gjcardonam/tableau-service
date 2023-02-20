@@ -1,7 +1,7 @@
 # Add server and tableau API version as Server: Version
 
 server:
-  tableau.falabella.com: 
+  tableau.falabella.com:
     version: 3.14
     pat_secret: secreto
     pat_name: api_token

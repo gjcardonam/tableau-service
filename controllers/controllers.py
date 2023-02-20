@@ -27,9 +27,9 @@ def controllers(route, content):
 
     # Dynamic import of microservices
     microservice_module = __import__(
-        f'micro_service.{microservice}.main', fromlist=[microservice])
+        f'micro_service.{microservice}.main', fromlist=['main'])
 
     # Calling the microservice
-    call = getattr(microservice_module, microservice)(users)
+    call = getattr(microservice_module, 'main')(users)
 
     return call
